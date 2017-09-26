@@ -30,10 +30,20 @@ const splitPhrase = phrase.split("");
 return splitPhrase;
 }
 
-const getRandomPhraseArray = getRandomPhraseArray(phrases);
 
-function addPhraseToDisplay(getRandomPhraseArray){
-	for (let i = 0; i < getRandomPhraseArray.length; i++) {
-		
+
+function addPhraseToDisplay() {
+	const splittedPhrases = getRandomPhraseArray(phrases);
+	
+	for (let i = 0; i < splittedPhrases.length; i++) {
+		let phraseLetters = splittedPhrases[i];
+		if (phraseLetters !== ' ') {
+			let ul = document.getElementById('phrase');
+			let li = document.createElement('li');
+			li.textContent = phraseLetters;
+			ul.appendChild(li);
+		} 
 	}
 } 
+
+addPhraseToDisplay();
