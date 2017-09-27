@@ -51,3 +51,9 @@ function addPhraseToDisplay(arr) {
 
 const phraseArray = getRandomPhraseArray(phrases);
 addPhraseToDisplay(phraseArray);
+
+var button = qwerty.querySelector("button");
+
+button.addEventListener("click", function() { 
+	console.log("hello");
+});
