@@ -85,10 +85,10 @@ button {
 
 .letter {
   font-size: var(--font-size-medium);
-  height: 65px;
-  width: 65px;
+  height: 45px;
+  width: 45px;
   padding: 20px 1px 0 1px;
-  margin-right: 2px;
+  margin: 20px 2px;
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;

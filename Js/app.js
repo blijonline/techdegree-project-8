@@ -1,6 +1,6 @@
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-let missed;
+let missed= 0;
 
 
 // hide overlay when pushing on the "Start game" button
@@ -14,36 +14,40 @@ startButton.addEventListener('click', function() {
 
 // phrase array
 
-const phrases = 
-	['mike the frog', 
+const phrases = [
+	'mike the frog', 
 	'learn something today',
 	'techdegree front end webdevelopment course',
 	'you will never gruess this tricky phrase',
-	'happy coding']
+	'happy coding'
+	];
 
 
 // Choose a random phrase and split it into characters
 
-function getRandomPhraseArray(phrases) {
-const phrase = phrases[Math.floor(Math.random() * phrases.length)];
-const splitPhrase = phrase.split("");
-return splitPhrase;
+function getRandomPhraseArray(arr) {
+const phrase = arr[Math.floor(Math.random() * arr.length)];
+const split = phrase.split('');
+   return split;
 }
 
 
 
-function addPhraseToDisplay() {
-	const splittedPhrases = getRandomPhraseArray(phrases);
-	
-	for (let i = 0; i < splittedPhrases.length; i++) {
-		let phraseLetters = splittedPhrases[i];
-		if (phraseLetters !== ' ') {
+function addPhraseToDisplay(arr) {
+	for (let i = 0; i < arr.length; i++) {
+			let phraseCharacters = arr[i];
 			let ul = document.getElementById('phrase');
 			let li = document.createElement('li');
-			li.textContent = phraseLetters;
+			li.textContent = phraseCharacters;
 			ul.appendChild(li);
-		} 
+			if (phraseCharacters === " " ) {
+				li.className = "space";
+			} else {
+				li.className = "letter";
+			}
 	}
 } 
 
-addPhraseToDisplay();
+
+const phraseArray = getRandomPhraseArray(phrases);
+addPhraseToDisplay(phraseArray);
