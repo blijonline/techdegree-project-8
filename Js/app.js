@@ -52,26 +52,30 @@ function addPhraseToDisplay(arr) {
 const phraseArray = getRandomPhraseArray(phrases);
 addPhraseToDisplay(phraseArray);
 
-const button = document.querySelectorAll('#phrase .letter')
+
 
 
 function checkLetter(button) {
- 	if (button.className = "letter") {
- 		for (let i = 0; i < button.length; i++) {
- 			let buttonLetter = button[i];
- 			let showLetter = buttonLetter.textContent;
+ const phraseLetters = document.querySelectorAll('#phrase .letter')
+ 		for (let i = 0; i < phraseLetters.length; i++) {
+ 			let phraseLetter = phraseLetters[i];
+ 			let showLetter = phraseLetter.textContent;
+ 			let buttonLetter = button.textContent;
 
- 			if ( showLetter == button ) {
- 				buttonLetter.className = "show";
- 				let goodGuess = showLetter;
- 				
+ 			if ( showLetter == buttonLetter ) {
+ 				showLetter.className = "show";
+ 				let letterFound = showLetter;
+ 				return letterFound;
+	 		} else {
+	 			return null;
+	 		}	
  		}
- 	}
+
 }
 
 qwerty.addEventListener("click", (e) => { 
 	if (e.target.tagName === 'BUTTON') {
-		checkLetter(button);
+		checkLetter();
 	}
 });
 
