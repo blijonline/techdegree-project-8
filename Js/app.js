@@ -68,7 +68,7 @@ qwerty.addEventListener("click", (e) => {
 
  			if (letterFound) {
  				return letterFound;
- 			} else {
+ 			} el {
  				return null;
  			}
  	}
