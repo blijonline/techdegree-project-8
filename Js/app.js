@@ -53,29 +53,23 @@ const phraseArray = getRandomPhraseArray(phrases);
 addPhraseToDisplay(phraseArray);
 
 
-
-
-function checkLetter(button) {
- const phraseLetters = document.querySelectorAll('#phrase .letter')
- 		for (let i = 0; i < phraseLetters.length; i++) {
- 			let phraseLetter = phraseLetters[i];
- 			let showLetter = phraseLetter.textContent;
- 			let buttonLetter = button.textContent;
-
- 			if ( showLetter == buttonLetter ) {
- 				showLetter.className = "show";
- 				let letterFound = showLetter;
- 				return letterFound;
-	 		} else {
-	 			return null;
-	 		}	
- 		}
-
-}
+const phraseLetter = document.querySelectorAll('#phrase .letter')
 
 qwerty.addEventListener("click", (e) => { 
 	if (e.target.tagName === 'BUTTON') {
-		checkLetter();
+ 		for (let i = 0; i < phraseLetter.length; i++) {
+ 			let guessedLetter = phraseLetter[i];
+ 			let showLetter = guessedLetter.textContent;
+ 			let button = e.target;
+ 			let buttonLetter = button.textContent;
+ 			if ( showLetter == buttonLetter ) {
+ 				guessedLetter.classList.add("show");
+
+ 			} 
+
+ 
+ 	}
+
 	}
 });
 
