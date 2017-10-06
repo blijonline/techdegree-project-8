@@ -55,21 +55,35 @@ addPhraseToDisplay(phraseArray);
 
 const phraseLetter = document.querySelectorAll('#phrase .letter')
 
-qwerty.addEventListener("click", (e) => { 
-	if (e.target.tagName === 'BUTTON') {
- 		for (let i = 0; i < phraseLetter.length; i++) {
+const checkLetter = (button) => {
+	
+	for (let i = 0; i < phraseLetter.length; i++) {
  			let guessedLetter = phraseLetter[i];
  			let showLetter = guessedLetter.textContent;
- 			let button = e.target;
  			let buttonLetter = button.textContent;
+ 			
  			if ( showLetter == buttonLetter ) {
  				guessedLetter.classList.add("show");
+ 				let letterFound = guessedLetter;
+ 				return letterFound;
+ 			} else {
+ 				return null;
+ 			}
 
- 			} 
-
- 
  	}
+}
 
+const checkWin = () => {
+	
+}
+
+qwerty.addEventListener("click", (e) => { 
+	if (e.target.tagName === 'BUTTON') { 
+		let button = e.target;
+		let letterFound = checkLetter(button);
+	if (letterFound == null){
+		missed++;
+	}
+	checkWin();
 	}
 });
-
