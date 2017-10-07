@@ -1,3 +1,4 @@
+debugger;
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
 let missed= 0;
@@ -53,9 +54,11 @@ const phraseArray = getRandomPhraseArray(phrases);
 addPhraseToDisplay(phraseArray);
 
 
-const phraseLetter = document.querySelectorAll('#phrase .letter')
+
 
 const checkLetter = (button) => {
+
+const phraseLetter = document.querySelectorAll('#phrase .letter')
 	
 	for (let i = 0; i < phraseLetter.length; i++) {
  			let guessedLetter = phraseLetter[i];
@@ -64,18 +67,20 @@ const checkLetter = (button) => {
  			
  			if ( showLetter == buttonLetter ) {
  				guessedLetter.classList.add("show");
- 				let letterFound = guessedLetter;
+ 				var letterFound = guessedLetter;
+ 				} 
+ 			}
+			
+			if (letterFound) {
  				return letterFound;
  			} else {
  				return null;
- 			}
-
- 	}
+ 		}
 }
 
-const checkWin = () => {
+// const checkWin = () => {
 	
-}
+// }
 
 qwerty.addEventListener("click", (e) => { 
 	if (e.target.tagName === 'BUTTON') { 
@@ -84,6 +89,6 @@ qwerty.addEventListener("click", (e) => {
 	if (letterFound == null){
 		missed++;
 	}
-	checkWin();
+	// checkWin();
 	}
 });
