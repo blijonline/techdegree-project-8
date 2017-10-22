@@ -118,7 +118,8 @@ button {
   color: #FFFFFF;
 }
 
-.btn__reset {
+.btn__reset,
+.play__again {
   padding: 8px;
   margin: 50px auto;
   background: #FFFFFF;
@@ -129,7 +130,9 @@ button {
 
 /* Overlay */
 
-#overlay {
+#overlay,
+#lose,
+#win {
   display: flex;
   flex-direction: column;
   position: fixed;

@@ -1,15 +1,20 @@
-debugger;
+// debugger;
+const mainContainer = document.querySelector('.main-container');
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-let missed= 0;
+const newOverlay = document.createElement('div');
+const h1 = document.createElement('h1');
+const playAgainButton = document.createElement('button');
+
+;let missed = 0;
 
 
 // hide overlay when pushing on the "Start game" button
 
 const startButton = document.querySelector('.btn__reset');
 
-startButton.addEventListener('click', function() {
-	document.getElementById('overlay').style.display = 'none';
+startButton.addEventListener('click', () => {
+	document.getElementById('overlay').remove();
 });
 
 
@@ -42,9 +47,9 @@ function addPhraseToDisplay(arr) {
 			li.textContent = phraseCharacters;
 			ul.appendChild(li);
 			if (phraseCharacters === " " ) {
-				li.className = "space";
+				li.className = 'space';
 			} else {
-				li.className = "letter";
+				li.className = 'letter';
 			}
 	}
 } 
@@ -52,7 +57,6 @@ function addPhraseToDisplay(arr) {
 
 const phraseArray = getRandomPhraseArray(phrases);
 addPhraseToDisplay(phraseArray);
-
 
 
 
@@ -66,7 +70,7 @@ const phraseLetter = document.querySelectorAll('#phrase .letter')
  			let buttonLetter = button.textContent;
  			
  			if ( showLetter == buttonLetter ) {
- 				guessedLetter.classList.add("show");
+ 				guessedLetter.classList.add('show');
  				var letterFound = guessedLetter;
  				} 
  			}
@@ -78,17 +82,43 @@ const phraseLetter = document.querySelectorAll('#phrase .letter')
  		}
 }
 
-// const checkWin = () => {
-	
-// }
+ const checkWin = () => {
+		
+		const shownLetters = document.querySelectorAll('.letter');
+		const chosenLetters = document.querySelectorAll('.show');
 
-qwerty.addEventListener("click", (e) => { 
+		mainContainer.appendChild(newOverlay);
+		newOverlay.appendChild(h1);
+	
+	if (missed == 5) {
+		newOverlay.id = 'lose';
+		newOverlay.classList.add('lose');
+		h1.textContent = 'You lose!';
+		playAgainButton.classList.add('play__again');
+		newOverlay.appendChild(playAgainButton).textContent = 'Try again';
+	}
+
+	if (shownLetters.length === chosenLetters.length) {
+		newOverlay.id = 'win';
+		newOverlay.classList.add('win');
+		h1.textContent = 'You won!';
+		playAgainButton.classList.add('play__again');
+		newOverlay.appendChild(playAgainButton).textContent = 'Play again';
+	}
+ }
+
+qwerty.addEventListener('click', (e) => { 
 	if (e.target.tagName === 'BUTTON') { 
 		let button = e.target;
 		let letterFound = checkLetter(button);
+		button.classList.add('chosen');
+		button.disabled = true;
 	if (letterFound == null){
-		missed++;
+		
+		const ol = document.querySelector('ol');
+		ol.removeChild(ol.getElementsByTagName('li')[0]);
+		missed += 1;
 	}
-	// checkWin();
+	checkWin();
 	}
 });
