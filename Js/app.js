@@ -96,6 +96,9 @@ const phraseLetter = document.querySelectorAll('#phrase .letter')
 		h1.textContent = 'You lose!';
 		playAgainButton.classList.add('play__again');
 		newOverlay.appendChild(playAgainButton).textContent = 'Try again';
+		playAgainButton.addEventListener('click', () => {
+			location.reload();
+		});
 	}
 
 	if (shownLetters.length === chosenLetters.length) {
@@ -104,6 +107,9 @@ const phraseLetter = document.querySelectorAll('#phrase .letter')
 		h1.textContent = 'You won!';
 		playAgainButton.classList.add('play__again');
 		newOverlay.appendChild(playAgainButton).textContent = 'Play again';
+		playAgainButton.addEventListener('click', () => {
+			location.reload();
+		});
 	}
  }
 
