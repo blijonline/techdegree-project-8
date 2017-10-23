@@ -1,12 +1,10 @@
-// debugger;
 const mainContainer = document.querySelector('.main-container');
 const qwerty = document.getElementById('qwerty');
 const phrase = document.getElementById('phrase');
-const newOverlay = document.createElement('div');
+const div = document.createElement('div');
 const h1 = document.createElement('h1');
 const playAgainButton = document.createElement('button');
-
-;let missed = 0;
+let missed = 0;
 
 
 // hide overlay when pushing on the "Start game" button
@@ -37,7 +35,7 @@ const split = phrase.split('');
    return split;
 }
 
-
+// Add phrases to display
 
 function addPhraseToDisplay(arr) {
 	for (let i = 0; i < arr.length; i++) {
@@ -54,11 +52,18 @@ function addPhraseToDisplay(arr) {
 	}
 } 
 
+// create a new overlay for the win or lose message
+
+function newOverlay() {
+		mainContainer.appendChild(div);
+		div.appendChild(h1);
+		playAgainButton.classList.add('play__again');
+} 
 
 const phraseArray = getRandomPhraseArray(phrases);
 addPhraseToDisplay(phraseArray);
 
-
+// checkLetter function
 
 const checkLetter = (button) => {
 
@@ -82,36 +87,37 @@ const phraseLetter = document.querySelectorAll('#phrase .letter')
  		}
 }
 
+// checkwin function
+
  const checkWin = () => {
 		
 		const shownLetters = document.querySelectorAll('.letter');
 		const chosenLetters = document.querySelectorAll('.show');
 
-		mainContainer.appendChild(newOverlay);
-		newOverlay.appendChild(h1);
-	
 	if (missed == 5) {
-		newOverlay.id = 'lose';
-		newOverlay.classList.add('lose');
+		newOverlay();
+		div.id = 'lose';
+		div.classList.add('lose');
 		h1.textContent = 'You lose!';
-		playAgainButton.classList.add('play__again');
-		newOverlay.appendChild(playAgainButton).textContent = 'Try again';
+		div.appendChild(playAgainButton).textContent = 'Try again';
 		playAgainButton.addEventListener('click', () => {
 			location.reload();
 		});
 	}
 
 	if (shownLetters.length === chosenLetters.length) {
-		newOverlay.id = 'win';
-		newOverlay.classList.add('win');
+		newOverlay();
+		div.id = 'win';
+		div.classList.add('win');
 		h1.textContent = 'You won!';
-		playAgainButton.classList.add('play__again');
-		newOverlay.appendChild(playAgainButton).textContent = 'Play again';
+		div.appendChild(playAgainButton).textContent = 'Play again';
 		playAgainButton.addEventListener('click', () => {
 			location.reload();
 		});
 	}
  }
+
+// add eventlistener keyboard keys
 
 qwerty.addEventListener('click', (e) => { 
 	if (e.target.tagName === 'BUTTON') { 

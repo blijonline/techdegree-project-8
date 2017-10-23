@@ -56,6 +56,13 @@ button {
   cursor: pointer;
 }
 
+button:hover {
+-webkit-transform: scale(0.9);
+    -ms-transform: scale(0.9);
+        transform: scale(0.9);
+}
+
+
 .main-container {
   display: flex;
   flex-direction: column;
@@ -118,7 +125,7 @@ button {
   height: 45px;
   width: 45px;
   padding: 10px 1px 0 1px;
-  margin: 20px 2px;
+  margin: 2px;
   color: transparent;
   background: var(--color-neutral-light);
   border-radius: 5px;
