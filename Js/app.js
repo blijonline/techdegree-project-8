@@ -22,7 +22,7 @@ const phrases = [
 	'mike the frog', 
 	'learn something today',
 	'techdegree front end webdevelopment course',
-	'you will never gruess this tricky phrase',
+	'you will never guess this tricky phrase',
 	'happy coding'
 	];
 
